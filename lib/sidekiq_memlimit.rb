@@ -13,7 +13,7 @@ class SidekiqMemlimit
                 run_gc
                 if max_mb && mb > max_mb
                   Sidekiq.logger.error "#{self}: Exceeded max memory limit (#{mb} > #{max_mb} MB)"
-                  Process.kill('USR1', $$)
+                  Process.kill('TERM', $$)
                   Thread.exit
                 end
               end
